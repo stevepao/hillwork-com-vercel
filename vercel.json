@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/press",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/press/",
+      "destination": "/index.html"
+    }
+  ]
+}

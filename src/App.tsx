@@ -26,6 +26,7 @@ import {
   Clock,
   Send
 } from 'lucide-react';
+import PressPage from './pages/PressPage';
 
 const portraitImage = new URL('./assets/images/portrait_stephen_pao.webp', import.meta.url).href;
 const techDnaImage = new URL('./assets/images/tech_dna_1780509815040.webp', import.meta.url).href;
@@ -51,6 +52,14 @@ declare global {
 }
 
 export default function App() {
+  const pathname = typeof window === 'undefined'
+    ? '/'
+    : window.location.pathname.replace(/\/+$/, '') || '/';
+
+  return pathname === '/press' ? <PressPage /> : <HomePage />;
+}
+
+function HomePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'all' | 'core' | 'functional'>('all');
@@ -285,6 +294,12 @@ export default function App() {
               >
                 Contact
               </a>
+              <a
+                href="/press"
+                className="font-display font-bold text-xs tracking-widest text-stone-500 hover:text-stone-900 uppercase transition-colors"
+              >
+                Press
+              </a>
             </nav>
 
             {/* Actions */}
@@ -343,6 +358,13 @@ export default function App() {
                   className="block px-3 py-2 rounded-xl text-base font-bold text-stone-700 hover:text-stone-900 hover:bg-stone-50 transition-colors"
                 >
                   Contact
+                </a>
+                <a
+                  href="/press"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-3 py-2 rounded-xl text-base font-bold text-stone-700 hover:text-stone-900 hover:bg-stone-50 transition-colors"
+                >
+                  Press
                 </a>
                 <div className="pt-4 border-t border-stone-100">
                   <a

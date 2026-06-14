@@ -9,6 +9,8 @@
     "build": "vite build",
     "start": "node server/index.js",
     "preview": "npm run build && npm start",
+    "generate:social-preview": "node scripts/generate-social-preview.mjs",
+    "optimize:press-images": "node scripts/optimize-press-images.mjs",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"
   },
@@ -27,6 +29,7 @@
     "@vitejs/plugin-react": "^5.0.4",
     "autoprefixer": "^10.4.21",
     "esbuild": "^0.25.0",
+    "sharp": "^0.35.1",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",

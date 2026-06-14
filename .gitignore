@@ -1,6 +1,7 @@
 node_modules/
 dist/
-/assets/
+assets/*
+!assets/pao-articles-press.json
 
 .env
 .env.*
