@@ -633,7 +633,7 @@ function HomePage() {
           <div className="relative bg-stone-950 text-white rounded-3xl p-10 md:p-16 text-center overflow-hidden border border-stone-900 shadow-md group">
             <img
               src={slateSlabImage}
-              alt=""
+              alt="Charcoal slate texture"
               aria-hidden="true"
               className="absolute inset-0 w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-[4000ms] pointer-events-none"
             />
