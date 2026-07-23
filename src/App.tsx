@@ -459,25 +459,25 @@ function HomePage() {
           
           {/* Highlight Cards Grid - Pill style Bento Bar */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <div className="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm text-center lg:text-left flex items-center justify-center lg:justify-start gap-3 transition-colors duration-300 hover:bg-stone-50/50">
+            <div className="bg-white border border-stone-200 rounded-2xl p-5 text-center lg:text-left flex items-center justify-center lg:justify-start gap-3">
               <span className="h-2 w-2 bg-sky-500 rounded-full shrink-0"></span>
               <span className="font-display font-extrabold text-xs tracking-wider uppercase text-stone-800">
                 What I've Seen
               </span>
             </div>
-            <div className="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm text-center lg:text-left flex items-center justify-center lg:justify-start gap-3 transition-colors duration-300 hover:bg-stone-50/50">
+            <div className="bg-white border border-stone-200 rounded-2xl p-5 text-center lg:text-left flex items-center justify-center lg:justify-start gap-3">
               <span className="h-2 w-2 bg-blue-500 rounded-full shrink-0"></span>
               <span className="font-display font-extrabold text-xs tracking-wider uppercase text-stone-800">
                 Strategic Growth
               </span>
             </div>
-            <div className="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm text-center lg:text-left flex items-center justify-center lg:justify-start gap-3 transition-colors duration-300 hover:bg-stone-50/50">
+            <div className="bg-white border border-stone-200 rounded-2xl p-5 text-center lg:text-left flex items-center justify-center lg:justify-start gap-3">
               <span className="h-2 w-2 bg-amber-500 rounded-full shrink-0"></span>
               <span className="font-display font-extrabold text-xs tracking-wider uppercase text-stone-800">
                 Continuous Learning
               </span>
             </div>
-            <div className="bg-white border border-stone-200 rounded-2xl p-5 shadow-sm text-center lg:text-left flex items-center justify-center lg:justify-start gap-3 transition-colors duration-300 hover:bg-stone-50/50">
+            <div className="bg-white border border-stone-200 rounded-2xl p-5 text-center lg:text-left flex items-center justify-center lg:justify-start gap-3">
               <span className="h-2 w-2 bg-indigo-500 rounded-full shrink-0"></span>
               <span className="font-display font-extrabold text-xs tracking-wider uppercase text-stone-800">
                 Broad Mentorship
