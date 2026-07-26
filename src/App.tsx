@@ -383,7 +383,7 @@ function HomePage() {
       </header>
 
       {/* HERO SECTION - GORGEOUS BENTO GRID */}
-      <section className="relative py-8 md:py-16">
+      <section className="relative pt-8 pb-6 md:pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
             
