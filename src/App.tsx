@@ -457,36 +457,6 @@ function HomePage() {
       <section id="expertise" className="relative py-12 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Focus markers — labels, not controls */}
-          <div className="mb-6 border-y border-stone-200/80 py-5">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4">
-              <div className="flex items-center gap-2.5">
-                <span className="h-1.5 w-1.5 bg-sky-500 rounded-full shrink-0" aria-hidden="true"></span>
-                <span className="font-mono text-[10px] tracking-[0.18em] uppercase font-bold text-stone-500">
-                  What I've Seen
-                </span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <span className="h-1.5 w-1.5 bg-blue-500 rounded-full shrink-0" aria-hidden="true"></span>
-                <span className="font-mono text-[10px] tracking-[0.18em] uppercase font-bold text-stone-500">
-                  Strategic Growth
-                </span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <span className="h-1.5 w-1.5 bg-amber-500 rounded-full shrink-0" aria-hidden="true"></span>
-                <span className="font-mono text-[10px] tracking-[0.18em] uppercase font-bold text-stone-500">
-                  Continuous Learning
-                </span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <span className="h-1.5 w-1.5 bg-indigo-500 rounded-full shrink-0" aria-hidden="true"></span>
-                <span className="font-mono text-[10px] tracking-[0.18em] uppercase font-bold text-stone-500">
-                  Broad Mentorship
-                </span>
-              </div>
-            </div>
-          </div>
-
           {/* Large split Row for Copy and Imagery */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
             
