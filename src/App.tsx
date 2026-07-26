@@ -454,9 +454,8 @@ function HomePage() {
       </section>
 
       {/* EXPERTISE SECTION - MODULAR HIGHLIGHTS */}
-      <section id="expertise" className="relative py-12 transition-colors duration-500">
+      <section id="expertise" className="relative py-6 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
           {/* Large split Row for Copy and Imagery */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
             
