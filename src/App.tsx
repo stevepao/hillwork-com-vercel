@@ -457,31 +457,33 @@ function HomePage() {
       <section id="expertise" className="relative py-12 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Highlight Cards Grid - Pill style Bento Bar */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <div className="bg-white border border-stone-200 rounded-2xl p-5 text-center lg:text-left flex items-center justify-center lg:justify-start gap-3">
-              <span className="h-2 w-2 bg-sky-500 rounded-full shrink-0"></span>
-              <span className="font-display font-extrabold text-xs tracking-wider uppercase text-stone-800">
-                What I've Seen
-              </span>
-            </div>
-            <div className="bg-white border border-stone-200 rounded-2xl p-5 text-center lg:text-left flex items-center justify-center lg:justify-start gap-3">
-              <span className="h-2 w-2 bg-blue-500 rounded-full shrink-0"></span>
-              <span className="font-display font-extrabold text-xs tracking-wider uppercase text-stone-800">
-                Strategic Growth
-              </span>
-            </div>
-            <div className="bg-white border border-stone-200 rounded-2xl p-5 text-center lg:text-left flex items-center justify-center lg:justify-start gap-3">
-              <span className="h-2 w-2 bg-amber-500 rounded-full shrink-0"></span>
-              <span className="font-display font-extrabold text-xs tracking-wider uppercase text-stone-800">
-                Continuous Learning
-              </span>
-            </div>
-            <div className="bg-white border border-stone-200 rounded-2xl p-5 text-center lg:text-left flex items-center justify-center lg:justify-start gap-3">
-              <span className="h-2 w-2 bg-indigo-500 rounded-full shrink-0"></span>
-              <span className="font-display font-extrabold text-xs tracking-wider uppercase text-stone-800">
-                Broad Mentorship
-              </span>
+          {/* Focus markers — labels, not controls */}
+          <div className="mb-6 border-y border-stone-200/80 py-5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-4">
+              <div className="flex items-center gap-2.5">
+                <span className="h-1.5 w-1.5 bg-sky-500 rounded-full shrink-0" aria-hidden="true"></span>
+                <span className="font-mono text-[10px] tracking-[0.18em] uppercase font-bold text-stone-500">
+                  What I've Seen
+                </span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <span className="h-1.5 w-1.5 bg-blue-500 rounded-full shrink-0" aria-hidden="true"></span>
+                <span className="font-mono text-[10px] tracking-[0.18em] uppercase font-bold text-stone-500">
+                  Strategic Growth
+                </span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <span className="h-1.5 w-1.5 bg-amber-500 rounded-full shrink-0" aria-hidden="true"></span>
+                <span className="font-mono text-[10px] tracking-[0.18em] uppercase font-bold text-stone-500">
+                  Continuous Learning
+                </span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <span className="h-1.5 w-1.5 bg-indigo-500 rounded-full shrink-0" aria-hidden="true"></span>
+                <span className="font-mono text-[10px] tracking-[0.18em] uppercase font-bold text-stone-500">
+                  Broad Mentorship
+                </span>
+              </div>
             </div>
           </div>
 
