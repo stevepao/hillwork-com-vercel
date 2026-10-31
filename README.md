@@ -1,18 +1,25 @@
 # Hillwork
 
-React/Vite site for Hillwork, LLC, with native Node API routes for contact form mail.
+React/Vite site for Hillwork, LLC, with Cloudflare Pages Functions for the contact form.
 
-The frontend renders in the browser. The direct-message form is handled by a Node/Nodemailer endpoint that sends mail through SMTP.
+The frontend renders in the browser. The direct-message form is handled by a Pages Function that sends mail through PurelyMail SMTP via `@workermailer/smtp`.
 
 ## Deployment
 
-Vercel builds the Vite frontend and serves the Node API functions in `api/`.
+Cloudflare Pages builds the Vite frontend and serves Pages Functions from `functions/`.
 
 - `/` for the website
-- `/api/contact` for contact form submissions through Nodemailer/SMTP
+- `/press` for the selected press archive (SPA rewrite)
+- `/api/contact` for contact form submissions through PurelyMail SMTP
 - `/api/config` for public frontend config, currently the Cloudflare Turnstile site key
 
-Set these environment variables in Vercel using the same names as `.env.example`:
+Build settings in the Cloudflare Pages project:
+
+- Build command: `npm run build`
+- Output directory: `dist`
+- Compatibility flag: `nodejs_compat` (also set in `wrangler.toml`)
+
+Set these environment variables in the Cloudflare Pages project (Production and Preview) using the same names as `.env.example`:
 
 - `SMTP_HOST`
 - `SMTP_PORT`
@@ -24,6 +31,12 @@ Set these environment variables in Vercel using the same names as `.env.example`
 - `TURNSTILE_SITE_KEY`
 - `TURNSTILE_SECRET_KEY`
 
+CLI deploy (after `npx wrangler login`):
+
+```sh
+npm run deploy
+```
+
 ## Local Development
 
 For quick React/Vite work:
@@ -33,7 +46,7 @@ For quick React/Vite work:
 2. Start Vite:
    `npm run dev`
 
-For contact form API testing during Vite development, run the API server in another terminal:
+For contact form API testing during Vite development, run the local Node API (Nodemailer) in another terminal:
 
 ```sh
 npm run dev:api
@@ -41,10 +54,10 @@ npm run dev:api
 
 The Vite dev server proxies `/api/*` requests to that Node server.
 
-To preview the production-style Node server locally:
+To preview the Cloudflare Pages Functions locally (including Worker SMTP):
 
 ```sh
-npm run preview
+npm run pages:dev
 ```
 
 ## License

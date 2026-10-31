@@ -9,12 +9,15 @@
     "build": "vite build",
     "start": "node server/index.js",
     "preview": "npm run build && npm start",
+    "pages:dev": "npm run build && wrangler pages dev dist --compatibility-flags=nodejs_compat",
+    "deploy": "npm run build && wrangler pages deploy dist",
     "generate:social-preview": "node scripts/generate-social-preview.mjs",
     "optimize:press-images": "node scripts/optimize-press-images.mjs",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@workermailer/smtp": "^0.2.1",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "lucide-react": "^0.546.0",
@@ -33,6 +36,7 @@
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
     "typescript": "~5.8.2",
-    "vite": "^6.2.3"
+    "vite": "^6.2.3",
+    "wrangler": "^4.156.0"
   }
 }
