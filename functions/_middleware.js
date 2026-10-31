@@ -26,7 +26,7 @@ async function serveSpaShell(context) {
 export async function onRequest(context) {
   const pathname = new URL(context.request.url).pathname.replace(/\/+$/, '') || '/';
 
-  if (pathname === '/press' && context.request.method === 'GET') {
+  if (pathname === '/press' && (context.request.method === 'GET' || context.request.method === 'HEAD')) {
     return serveSpaShell(context);
   }
 
