@@ -1,4 +1,1 @@
-# Proxy to the site root (not /index.html). Rewriting to /index.html makes
-# Cloudflare Pages 308-redirect to /, which breaks the /press SPA route.
-/press / 200
-/press/ / 200
+# /press is handled by functions/press.js so browsers never see a 308 -> /.
