@@ -5,8 +5,8 @@ import sharp from 'sharp';
 
 const projectRoot = process.cwd();
 const sourceJsonPath = path.join(projectRoot, 'assets', 'pao-articles-press.json');
-const outputDir = path.join(projectRoot, 'public', 'press');
-const publicPathPrefix = '/press';
+const outputDir = path.join(projectRoot, 'public', 'press-media');
+const publicPathPrefix = '/press-media';
 const maxWidth = 320;
 const maxHeight = 160;
 const fallbackImageUrls = new Map([
