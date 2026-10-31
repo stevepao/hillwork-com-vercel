@@ -1,35 +1,46 @@
 # Hillwork
 
-React/Vite site for Hillwork, LLC, with Cloudflare Pages Functions for the contact form.
+React/Vite site for Hillwork, LLC.
 
-The frontend renders in the browser. The direct-message form is handled by a Pages Function that sends mail through PurelyMail SMTP via `@workermailer/smtp`.
+> **Hosting note:** Despite the GitHub repo name (`hillwork-com-vercel`), this project **deploys to Cloudflare Pages**, not Vercel. Vercel has been disconnected. Production is `https://hillwork.us` on Cloudflare.
 
-## Deployment
+The frontend renders in the browser. The direct-message form is handled by a Cloudflare Pages Function that sends mail through PurelyMail SMTP via `@workermailer/smtp` (Nodemailer is only for local Node API testing).
 
-Cloudflare Pages builds the Vite frontend and serves Pages Functions from `functions/`.
+## Architecture
 
-- `/` for the website
-- `/press` for the selected press archive (SPA rewrite)
-- `/api/contact` for contact form submissions through PurelyMail SMTP
-- `/api/config` for public frontend config, currently the Cloudflare Turnstile site key
+| Path | What serves it |
+| --- | --- |
+| `/` | Static Vite build (`dist/`) |
+| `/press` | Same SPA shell, routed by `functions/_middleware.js` (keeps URL at `/press`; do **not** rewrite to `/index.html` or Cloudflare may 308 → `/`) |
+| `/press-media/*` | Static press logos (kept off `/press/` so the page route does not collide with an asset folder) |
+| `/api/config` | Pages Function — public Turnstile site key |
+| `/api/contact` | Pages Function — Turnstile verify + PurelyMail SMTP via `@workermailer/smtp` |
 
-Build settings in the Cloudflare Pages project:
+## Deployment (Cloudflare Pages)
 
-- Build command: `npm run build`
-- Output directory: `dist`
-- Compatibility flag: `nodejs_compat` (also set in `wrangler.toml`)
+- **Git production branch:** `main`
+- **Build command:** `npm run build`
+- **Output directory:** `dist`
+- **Compatibility flag:** `nodejs_compat` (also in `wrangler.toml`)
 
-Set these environment variables in the Cloudflare Pages project (Production and Preview) using the same names as `.env.example`:
+Set these environment variables in the Cloudflare Pages project (Production and Preview), same names as `.env.example`:
 
-- `SMTP_HOST`
-- `SMTP_PORT`
-- `SMTP_ENCRYPTION`
-- `SMTP_USER`
-- `SMTP_PASS`
-- `CONTACT_TO`
-- `CONTACT_FROM`
-- `TURNSTILE_SITE_KEY`
-- `TURNSTILE_SECRET_KEY`
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_ENCRYPTION`, `SMTP_USER`, `SMTP_PASS`
+- `CONTACT_TO`, `CONTACT_FROM`
+- `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`
+
+After changing env vars, **redeploy** so Functions pick them up.
+
+### Turnstile hostnames
+
+In the Turnstile widget allowlist, include:
+
+- `hillwork.us` (and `www.hillwork.us` if needed)
+- `hillwork-com-vercel.pages.dev` (or `*.pages.dev`) for preview testing
+
+### Custom domain / www
+
+`hillwork.us` is the canonical host. `www.hillwork.us` should **301** to `https://hillwork.us` via a Cloudflare Redirect Rule (not by serving a second copy of the site).
 
 CLI deploy (after `npx wrangler login`):
 
@@ -39,26 +50,29 @@ npm run deploy
 
 ## Local Development
 
-For quick React/Vite work:
+1. `npm install`
+2. `npm run dev` — Vite on port 3000
 
-1. Install dependencies:
-   `npm install`
-2. Start Vite:
-   `npm run dev`
-
-For contact form API testing during Vite development, run the local Node API (Nodemailer) in another terminal:
+Contact form API during Vite dev (Nodemailer, not Worker SMTP):
 
 ```sh
 npm run dev:api
 ```
 
-The Vite dev server proxies `/api/*` requests to that Node server.
+Vite proxies `/api/*` to that Node server (`PORT=3001`).
 
-To preview the Cloudflare Pages Functions locally (including Worker SMTP):
+Preview Pages Functions locally (including Worker SMTP):
 
 ```sh
 npm run pages:dev
 ```
+
+## Lessons learned (migration from Vercel)
+
+1. **APIs need a Worker-compatible mail path** — Nodemailer/SMTP sockets do not run on Pages Functions; use `@workermailer/smtp` (or an HTTP mail API) in production.
+2. **Don’t put static assets at the same path as an SPA route** — `/press` page vs `/press/` images broke routing; assets live under `/press-media/`.
+3. **Avoid `_redirects` to `/index.html` for SPA routes on Pages** — that can 308 to `/`, and browsers cache 308s permanently. Prefer a Function/`_middleware` that returns **200** with `Cache-Control: no-store`. Test redirect fixes in a private window.
+4. **Cut over with a branch** — keep `main` deployable on the old host until Pages preview works, then switch DNS, disconnect the old host’s Git integration, merge, set Pages production branch to `main`.
 
 ## License
 
