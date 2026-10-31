@@ -1,4 +1,4 @@
-# Serve the SPA for the /press page. Assets live under /press-media/ so they
-# do not collide with this route on Cloudflare Pages.
-/press /index.html 200
-/press/ /index.html 200
+# Proxy to the site root (not /index.html). Rewriting to /index.html makes
+# Cloudflare Pages 308-redirect to /, which breaks the /press SPA route.
+/press / 200
+/press/ / 200
